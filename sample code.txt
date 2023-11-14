@@ -1,0 +1,40 @@
+import random
+
+class BankAccount:
+    def __init__(self, account_holder, initial_balance=0):
+        self.account_holder = account_holder
+        self.balance = initial_balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            print(f"Deposited ${amount}. New balance: ${self.balance}")
+
+    def withdraw(self, amount):
+        if 0 < amount <= self.balance:
+            self.balance -= amount
+            print(f"Withdrew ${amount}. New balance: ${self.balance}")
+
+    def check_balance(self):
+        print(f"Account balance for {self.account_holder}: ${self.balance}")
+
+def main():
+    print("Welcome to the Python Bank!")
+    account_holder = "John Doe"
+    initial_balance = random.uniform(1000, 5000)
+
+    account = BankAccount(account_holder, initial_balance)
+    for _ in range(10):
+        choice = random.choice(["1", "2", "3"])
+
+        if choice == "1":
+            amount = random.uniform(100, 1000)
+            account.deposit(amount)
+        elif choice == "2":
+            amount = random.uniform(100, 1000)
+            account.withdraw(amount)
+        elif choice == "3":
+            account.check_balance()
+
+if __name__ == "__main__":
+    main()
